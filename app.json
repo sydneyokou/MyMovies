@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "PokedeX",
-    "slug": "PokedeX",
+    "name": "Movies",
+    "slug": "Movies",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
