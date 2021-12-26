@@ -3,7 +3,8 @@
 import React from 'react'
 import { StyleSheet, Image, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
-import * as ImagePicker from 'react-native-image-picker'
+import ImagePicker from 'react-native-image-crop-picker';
+
 
 class Avatar extends React.Component {
 
@@ -15,21 +16,22 @@ class Avatar extends React.Component {
   
     // Ici nous appellerons la librairie react-native-image-picker pour récupérer un avatar
     _avatarClicked() {
-        ImagePicker.launchImageLibrary({}, (response) => {
-          if (response.didCancel) {
-            console.log('L\'utilisateur a annulé')
-          }
-          else if (response.error) {
-            console.log('Erreur : ', response.error)
-          }
-          else {
-            console.log('Photo : ', response.uri )
-            let requireSource = { uri: response.uri }
+      
+        ImagePicker.openPicker({
+          width: 300,
+          height: 300,
+          cropping: true,
+          freeStyleCropEnabled: true,
+        })
+          .then((response) => {
+            console.log('Photo : ', response.path )
+            let requireSource = { uri: response.path }
             // On crée une action avec l'image prise et on l'envoie au store Redux
             const action = { type: "SET_AVATAR", value: requireSource }
             this.props.dispatch(action)
-          }
-        })
+          })
+          .catch((error) => {});
+      
     }
   
 
