@@ -3,7 +3,7 @@
 import React from 'react'
 import { StyleSheet, Image, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
-import ImagePicker from 'react-native-image-picker'
+import * as ImagePicker from 'react-native-image-picker'
 
 class Avatar extends React.Component {
 
@@ -15,7 +15,7 @@ class Avatar extends React.Component {
   
     // Ici nous appellerons la librairie react-native-image-picker pour récupérer un avatar
     _avatarClicked() {
-        ImagePicker.showImagePicker({}, (response) => {
+        ImagePicker.launchImageLibrary({}, (response) => {
           if (response.didCancel) {
             console.log('L\'utilisateur a annulé')
           }
@@ -64,9 +64,9 @@ const styles = StyleSheet.create({
 
 // On mappe l'avatar aux props de notre component
 const mapStateToProps = state => {
-    return {
-      avatar: state.setAvatar.avatar
-    }
+  return {
+    avatar: state.setAvatar.avatar
   }
-  
-  export default connect(mapStateToProps)(Avatar)
+}
+
+export default connect(mapStateToProps)(Avatar)
