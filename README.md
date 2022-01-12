@@ -1,10 +1,10 @@
 # MyMovies
 
 React native app to consult and search movies and their descriptions, and tag your favourites
- -expo app
- -ios app
+-expo app
+-ios app
  
- Run the server :
+Run the server :
  npx react-native start
 
 Build the app on simulator:
